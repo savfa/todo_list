@@ -1,0 +1,8 @@
+.auth {
+    text-align: right;
+    margin: 0;
+}
+p i:nth-child(1) {
+    font-style: normal;
+    font-weight: bold;
+}
