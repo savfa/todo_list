@@ -1,0 +1,60 @@
+@import "~bootstrap/scss/bootstrap";
+
+html {
+  display: flex;
+  box-sizing: border-box;
+  min-height: 100%;
+  // font-size: $default-font-size;
+}
+
+* {
+  min-height: 0;
+  min-width: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  font-smooth: antialiased;
+  // background-color: $body-bg;
+  box-sizing: border-box;
+
+  &.overlay {
+    overflow-y: hidden;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 900;
+      width: 100vw;
+      height: 100%;
+      content: "";
+      // background-color: $overlay-bg-primary;
+    }
+  }
+
+  #root {
+    min-height: 100%;
+    height: 100%;
+  }
+}
+
+.layout {
+  width: 500px;
+  margin: 0 auto;
+  height: 100%;
+}
