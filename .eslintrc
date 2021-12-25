@@ -1,0 +1,86 @@
+// .eslintrc
+{
+  "env": {
+    "browser": true,
+    "es2020": true,
+    "jest": true,
+  },
+  "extends": [
+    "airbnb",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "react-hooks", "import", "prettier", "jsx-a11y"],
+  "rules": {
+    // Чтобы ESLint не спорил с правилами prettier, при использовании плагина prettier
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto",
+        "singleQuote": false
+      }
+    ],
+    // https://eslint.org/docs/rules/arrow-parens#require-parens-in-arrow-function-arguments-arrow-parens
+    "arrow-parens": ["error", "always"],
+    // https://eslint.org/docs/rules/no-var#require-const-or-let-declarations-for-variables
+    "no-var": "error",
+    // https://eslint.org/docs/rules/prefer-rest-params#prefer-rest-params
+    "prefer-rest-params": "error",
+    // https://eslint.org/docs/rules/prefer-spread#prefer-spread
+    "prefer-spread": "error",
+    // https://eslint.org/docs/rules/rest-spread-spacing#rest-spread-spacing
+    "rest-spread-spacing": "error",
+    // https://eslint.org/docs/rules/yield-star-spacing#yield-star-spacing
+    "yield-star-spacing": ["error", "after"],
+    // https://eslint.org/docs/rules/object-shorthand#object-shorthand
+    "object-shorthand": [
+      "error",
+      "always",
+      {
+        // https://eslint.org/docs/rules/object-shorthand#avoid-quotes
+        "avoidQuotes": true
+      }
+    ],
+    // https://eslint.org/docs/rules/quotes#quotes
+    "quotes": ["error", "backtick"],
+    // https://eslint.org/docs/rules/no-console
+    "no-console": "warn",
+    // https://eslint.org/docs/rules/prefer-const#prefer-const
+    "prefer-const": "error",
+    // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/master/docs/rules/label-has-associated-control.md#fail
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "labelAttributes": ["label"],
+        "controlComponents": ["FormControl"]
+      }
+    ],
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-prop-types.md
+    "react/no-unused-prop-types": "warn",
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-props-no-spreading.md
+    "react/jsx-props-no-spreading": "off",
+    // https://ru.reactjs.org/docs/hooks-rules.html Проверяем правила хуков
+    "react-hooks/rules-of-hooks": "error",
+    // Проверяем зависимости эффекта
+    "react-hooks/exhaustive-deps": "error",
+    // https://eslint.org/docs/rules/no-unused-vars
+    "no-unused-vars": [
+      "warn",
+      // "off",
+      {
+        // исключение для JSDoc документации
+        "varsIgnorePattern": "^defs"
+      }
+    ],
+     "react/prop-types": 0,
+     "react/require-default-props": 0
+  }
+}
