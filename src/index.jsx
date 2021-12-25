@@ -1,12 +1,35 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import thunk from "redux-thunk";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import { applyMiddleware, createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import reportWebVitals from "./reportWebVitals";
+
+import "./assets/styles/styles.scss";
+
+import rootReducer from "./store/reducers/index";
+import { createAPI, setDispatch } from "./assets/services/api";
 
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+
+const api = createAPI(() => ``);
+
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api)))
+);
+
+setDispatch(store.dispatch);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>
   </React.StrictMode>,
   document.getElementById(`root`)
 );

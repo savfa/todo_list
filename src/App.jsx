@@ -1,6 +1,9 @@
+import React from "react";
+
+import Layout from "./modules/todo/_components/Layout/Layout";
+
 const App = () => {
-  // eslint-disable-next-line react/react-in-jsx-scope
-  return <div className="App">sdfasfdasdfsdf</div>;
+  return <Layout />;
 };
 
 export default App;
