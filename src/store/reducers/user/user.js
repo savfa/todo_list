@@ -35,7 +35,7 @@ const ActionCreator = {
 };
 
 const authorizeUser = (dispatch, api, response) => {
-  const { user, token } = response.data.data;
+  const { user, token } = response.data;
   const accessToken = token.access;
   setUserAuthToken(accessToken);
   setAPIAuthHeaders(api, accessToken);
@@ -45,7 +45,7 @@ const authorizeUser = (dispatch, api, response) => {
 const Operation = {
   login: (authData) => (dispatch, getState, api) => {
     return api
-      .post(ServerURL.LOGIN, { ...authData })
+      .post(ServerURL.LOGIN, authData)
       .then((response) => {
         authorizeUser(dispatch, api, response);
         dispatch(ActionCreator.setAuthorization(AuthorizationStatus.AUTH));

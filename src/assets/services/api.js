@@ -9,8 +9,8 @@ export const ServerError = {
   NOT_ALLOWED: 405,
   INTERNAL_SERVER: 500,
 };
-
-export const BASE_SERVER_URL = process.env.REACT_APP_URL;
+// baseURL: "http://api.evgeniysavin.ru",
+export const BASE_SERVER_URL = `http://localhost:3001`;
 const DISABLE_LOADER = `disableLoader`;
 
 let dispatch;
@@ -30,6 +30,7 @@ export const createAPI = (onUnauthorized) => {
 
   const api = axios.create({
     baseURL: BASE_SERVER_URL,
+    responseType: `json`,
     timeout: 60000,
     withCredentials: true,
   });

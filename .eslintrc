@@ -53,6 +53,7 @@
     "quotes": ["error", "backtick"],
     // https://eslint.org/docs/rules/no-console
     "no-console": "warn",
+    "no-debugger": "warn",
     // https://eslint.org/docs/rules/prefer-const#prefer-const
     "prefer-const": "error",
     // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/master/docs/rules/label-has-associated-control.md#fail

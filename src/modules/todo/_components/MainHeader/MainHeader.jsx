@@ -1,16 +1,17 @@
 /* eslint-disable */
 import React from "react";
 import { Link } from "react-router-dom";
+import {AppRoute} from "../../../../assets/services/consts/routes";
 
 const MainHeader = (props) => {
-  const { userName, isAuth, logout } = props;
+  const { user, isAuth, logout } = props;
 
   return (
-    <div>
+    <div className="d-flex">
       {isAuth && (
         <>
           <p className="auth">
-            Привет: <i>{userName}</i>
+            Привет: <i>{user.userName}</i>
           </p>
           <p className="auth" onClick={logout}>
             <Link to="/" className="auth">
@@ -21,9 +22,9 @@ const MainHeader = (props) => {
       )}
       {!isAuth && (
         <p className="auth">
-          <Link to="/login">вход</Link>
+          <Link to={AppRoute.LOGIN}>вход</Link>
           <i> / </i>
-          <Link to="/registration">регистрация</Link>
+          <Link to={AppRoute.REGISTER}>регистрация</Link>
         </p>
       )}
     </div>

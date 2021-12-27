@@ -13,8 +13,9 @@ import rootReducer from "./store/reducers/index";
 import { createAPI, setDispatch } from "./assets/services/api";
 
 import App from "./App";
+import { useOnAuthorised } from "./assets/services/hooks/hooks";
 
-const api = createAPI(() => ``);
+const api = createAPI(useOnAuthorised);
 
 const store = createStore(
   rootReducer,

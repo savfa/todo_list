@@ -3,7 +3,6 @@ export const AUTH_NAME = `:authName`;
 
 export const AppRoute = {
   ROOT: `/`,
-  TODO: `/todo`,
   AUTH: `/auth/${AUTH_NAME}`,
   LOGIN: `/auth/login`, // вход
   REGISTER: `/auth/register`, // регистрация
