@@ -1,13 +1,10 @@
 import React, { useEffect, useMemo } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Formik, Field } from "formik";
-import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  AuthorizationStatus,
-  UserOperation,
-} from "../../../../../store/reducers/user/user";
-import { getAuthStatus } from "../../../../../store/reducers/user/selectors";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { UserOperation } from "../../../../../store/reducers/user/user";
 import { AppRoute } from "../../../../../assets/services/consts/routes";
 
 const AuthPageType = {
@@ -15,18 +12,18 @@ const AuthPageType = {
   REGISTER: `register`,
 };
 
-const AuthPage = () => {
-  const { authName } = useParams();
+const AuthPage = (props) => {
+  const { isAuth } = props;
 
+  const { authName } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const authorizationStatus = useSelector(getAuthStatus);
 
   useEffect(() => {
-    if (authorizationStatus === AuthorizationStatus.AUTH) {
+    if (isAuth) {
       navigate(AppRoute.ROOT);
     }
-  }, [authorizationStatus, navigate]);
+  }, [isAuth, navigate]);
 
   const formTitle = useMemo(() => {
     switch (authName) {
@@ -34,6 +31,17 @@ const AuthPage = () => {
         return `Вход`;
       case AuthPageType.REGISTER:
         return `Регистрация`;
+      default:
+        return ``;
+    }
+  }, [authName]);
+
+  const linkText = useMemo(() => {
+    switch (authName) {
+      case AuthPageType.LOGIN:
+        return `Зарегистрироваться`;
+      case AuthPageType.REGISTER:
+        return `Уже есть аккаунт`;
       default:
         return ``;
     }
@@ -50,6 +58,17 @@ const AuthPage = () => {
     }
   }, [authName]);
 
+  const handleSubmit = (values) => {
+    switch (authName) {
+      case AuthPageType.LOGIN:
+        return dispatch(UserOperation.login(values));
+      case AuthPageType.REGISTER:
+        return dispatch(UserOperation.register(values));
+      default:
+        return null;
+    }
+  };
+
   const initialValues = useMemo(() => {
     switch (authName) {
       case AuthPageType.LOGIN:
@@ -60,10 +79,6 @@ const AuthPage = () => {
         return {};
     }
   }, [authName]);
-
-  const handleSubmit = (values) => {
-    dispatch(UserOperation.login(values));
-  };
 
   return (
     <Container className="layout">
@@ -92,6 +107,23 @@ const AuthPage = () => {
                         </header>
                         <div className="form__body">
                           <div className="form__section">
+                            {authName === AuthPageType.REGISTER && (
+                              <Field name="login">
+                                {({ field }) => (
+                                  <Form.Group
+                                    className="mb-3"
+                                    controlId="formBasicLogin">
+                                    <Form.Label>Login</Form.Label>
+                                    <Form.Control
+                                      {...field}
+                                      type="text"
+                                      placeholder="Enter login"
+                                    />
+                                  </Form.Group>
+                                )}
+                              </Field>
+                            )}
+
                             <Field name="email">
                               {({ field }) => (
                                 <Form.Group
@@ -121,6 +153,17 @@ const AuthPage = () => {
                                 </Form.Group>
                               )}
                             </Field>
+
+                            <p className="d-flex justify-content-end">
+                              <Link
+                                to={
+                                  authName === AuthPageType.LOGIN
+                                    ? AppRoute.REGISTER
+                                    : AppRoute.LOGIN
+                                }>
+                                {linkText}
+                              </Link>
+                            </p>
 
                             <Button
                               variant="primary"

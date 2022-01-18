@@ -1,0 +1,23 @@
+.elements-wrap {
+  $root: ".elements-wrap";
+
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  &[data-nowrap="true"] {
+    flex-wrap: nowrap;
+  }
+
+  &>:nth-child(n) {
+    margin-right: 1rem;
+    flex-grow: 0;
+  }
+
+
+  &>:last-child {
+    margin-right: 0;
+  }
+}

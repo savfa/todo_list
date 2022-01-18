@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import thunk from "redux-thunk";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, useNavigate } from "react-router-dom";
 import { Provider } from "react-redux";
 import { applyMiddleware, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
@@ -11,11 +11,17 @@ import "./assets/styles/styles.scss";
 
 import rootReducer from "./store/reducers/index";
 import { createAPI, setDispatch } from "./assets/services/api";
+import { UserOperation } from "./store/reducers/user/user";
 
 import App from "./App";
-import { useOnAuthorised } from "./assets/services/hooks/hooks";
+import { deleteUserAuthToken } from "./assets/services/utils/localStorage";
 
-const api = createAPI(useOnAuthorised);
+const onUnauthorised = () => {
+  deleteUserAuthToken();
+  window.location.reload();
+};
+
+const api = createAPI(onUnauthorised);
 
 const store = createStore(
   rootReducer,
@@ -23,6 +29,7 @@ const store = createStore(
 );
 
 setDispatch(store.dispatch);
+store.dispatch(UserOperation.checkAuth());
 
 ReactDOM.render(
   <React.StrictMode>

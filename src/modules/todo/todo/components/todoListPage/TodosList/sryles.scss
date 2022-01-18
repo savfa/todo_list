@@ -1,0 +1,43 @@
+.todo-list {
+  $root: ".todo-list";
+
+  /*border: 1px solid #ced4da;
+  border-radius: 0.25rem;*/
+
+  &__item {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ced4da;
+    margin-bottom: 0.2rem;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #6c757d;
+    }
+
+  }
+
+  .done {
+    text-decoration: line-through;
+    background-color: #f8f9fa;
+  }
+
+  .important {
+    font-weight: bold;
+    color: #0d6efd;
+  }
+
+  &__item:first-child {
+    border-radius: 0.25rem  0.25rem 0  0;
+
+  }
+
+  &__item:last-child {
+    border-radius: 0 0 0.25rem  0.25rem;
+    border-bottom-color: #ced4da;
+
+    &:hover {
+      border-bottom: 1px solid #6c757d;
+    }
+  }
+}

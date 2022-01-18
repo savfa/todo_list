@@ -51,3 +51,24 @@ export const getUniqueArrayObjectsMoreFields = (
       )
   );
 };
+
+/**
+ * Возвращает правильное склонение слова от входного числа
+ * @param {number} count - число, от которого берем склонение
+ * @param {array} declensions - массив склонений слов, порядок от 1, пример (['минута', 'минуты', 'минут'])
+ * @returns {string} - возвращаюет правильное склонение из массива declensions
+ */
+export const declensionWordFromCount = (count, declensions) => {
+  const abs = Math.abs(count) % 100;
+  const abs1 = abs % 10;
+  if (abs > 10 && abs < 20) {
+    return declensions[2];
+  }
+  if (abs1 > 1 && abs1 < 5) {
+    return declensions[1];
+  }
+  if (abs1 === 1) {
+    return declensions[0];
+  }
+  return declensions[2];
+};

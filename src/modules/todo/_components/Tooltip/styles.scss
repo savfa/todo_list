@@ -1,0 +1,60 @@
+/* ==========================================================================
+   Ui-kit elements -- Tooltip
+   ========================================================================== */
+
+.tippy-box {
+  z-index: 100;
+  max-width: none !important;
+  background-color: #fff !important;
+  color: unset !important;
+  font-size: unset !important;
+  line-height: unset !important;
+  box-shadow: 0 10px 40px rgba(#21268A, 0.25);
+
+  .tippy-arrow {
+    color: #fff;
+  }
+}
+
+.tippy-content {
+  display: flex;
+  align-items: center;
+  padding: 1rem !important;
+}
+
+
+.tooltip {
+  $root: ".tooltip";
+
+  position: relative;
+  display: flex;
+  font-weight: 500;
+  opacity: 1;
+
+  &__content {
+    width: 100%;
+    word-wrap: break-word;
+  }
+
+  &__close {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+  }
+
+  #{$root}__content {
+    text-align: center;
+  }
+
+  &[data-behavior="click"] {
+
+    .button-icon {
+      display: block;
+    }
+  }
+}
+
+.tooltip-trigger {
+  display: inline-block;
+  line-height: 0;
+}

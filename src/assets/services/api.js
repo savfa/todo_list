@@ -113,8 +113,6 @@ export const setAPIAuthHeaders = (api, token) => {
     }
   } catch (err) {
     // eslint-disable-next-line no-console
-    console.log(err.name);
-    // eslint-disable-next-line no-console
-    console.log(err.message);
+    console.log(err);
   }
 };

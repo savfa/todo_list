@@ -9,10 +9,13 @@ export const AppRoute = {
 };
 
 export const ServerURL = {
-  // user
-  USER: `/api/user/`,
-  USERS: `/api/users/${ROUTE_ID}/`,
   // auth
   LOGIN: `/api/login/`,
   REGISTER: `/api/register/`,
+  // user
+  USER: `/api/user/`,
+  // todos
+  TODOS: `/api/todos/`,
+  TODO: `/api/todos/${ROUTE_ID}`,
+  FILTER_TODOS: `/api/filter/todos/`,
 };

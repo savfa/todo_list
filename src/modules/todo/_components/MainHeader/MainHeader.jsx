@@ -1,31 +1,34 @@
-/* eslint-disable */
 import React from "react";
-import { Link } from "react-router-dom";
-import {AppRoute} from "../../../../assets/services/consts/routes";
+import { Link, useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
+
+import "./styles.scss";
+
+import { AppRoute } from "../../../../assets/services/consts/routes";
 
 const MainHeader = (props) => {
   const { user, isAuth, logout } = props;
 
+  const navigate = useNavigate();
+
   return (
-    <div className="d-flex">
+    <div className="auth d-flex">
       {isAuth && (
         <>
-          <p className="auth">
-            Привет: <i>{user.userName}</i>
+          <p className="auth__name">
+            Привет: <i>{user?.login || user?.email}</i>
           </p>
-          <p className="auth" onClick={logout}>
-            <Link to="/" className="auth">
+          <p className="auth__logout">
+            <Link to="/" className="auth" onClick={logout}>
               выйти
             </Link>
           </p>
         </>
       )}
       {!isAuth && (
-        <p className="auth">
-          <Link to={AppRoute.LOGIN}>вход</Link>
-          <i> / </i>
-          <Link to={AppRoute.REGISTER}>регистрация</Link>
-        </p>
+        <Button variant="primary" onClick={() => navigate(AppRoute.LOGIN)}>
+          Войти
+        </Button>
       )}
     </div>
   );

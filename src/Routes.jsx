@@ -17,11 +17,11 @@ const Redirect = (props) => {
 };
 
 const MainRoutes = (props) => {
+  const { isAuth } = props;
+
   return (
     <Routes>
-      <Route path={AppRoute.ROOT} element={<TodoListPage />} />
-
-      <Route path="*" element={<div>404</div>} />
+      <Route path={AppRoute.ROOT} element={<TodoListPage isAuth={isAuth} />} />
     </Routes>
   );
 };

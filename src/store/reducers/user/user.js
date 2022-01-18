@@ -1,7 +1,7 @@
 import { setAPIAuthHeaders } from "../../../assets/services/api";
 import {
-  deleteAdminAuthToken,
   deleteUserAuthToken,
+  getUserAuthToken,
   setUserAuthToken,
 } from "../../../assets/services/utils/localStorage";
 import { ServerURL } from "../../../assets/services/consts/routes";
@@ -55,15 +55,33 @@ const Operation = {
       });
   },
   register: (data) => (dispatch, getState, api) => {
-    return api.post(ServerURL.REGISTER, { ...data }).then((response) => {
+    return api.post(ServerURL.REGISTER, data).then((response) => {
       authorizeUser(dispatch, api, response);
       dispatch(ActionCreator.setAuthorization(AuthorizationStatus.AUTH));
     });
   },
+  checkAuth: () => (dispatch, getState, api) => {
+    const token = getUserAuthToken();
+    if (!token) {
+      dispatch(ActionCreator.setAuthorization(AuthorizationStatus.NO_AUTH));
+      return Promise.resolve();
+    }
+    setAPIAuthHeaders(api, token);
+    return api
+      .get(ServerURL.USER)
+      .then((response) => {
+        const { data: user } = response.data;
+        dispatch(ActionCreator.setUser(user));
+        dispatch(ActionCreator.setAuthorization(AuthorizationStatus.AUTH));
+      })
+      .catch(() => {
+        dispatch(ActionCreator.setAuthorization(AuthorizationStatus.NO_AUTH));
+      });
+  },
   logout: () => (dispatch, getState, api) => {
     setAPIAuthHeaders(api);
     deleteUserAuthToken();
-    deleteAdminAuthToken();
+    // deleteAdminAuthToken();
     dispatch(ActionCreator.setUser({}));
     dispatch(ActionCreator.setAuthorization(AuthorizationStatus.NO_AUTH));
 
