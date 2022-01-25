@@ -11,7 +11,9 @@ import {
 } from "../../../../../store/reducers/todos/todos";
 
 import { todos as mockTodos } from "../../../../../assets/services/moks/todos";
-import TodosFilterPanel from "../../components/todoListPage/TodosFilterPanel/TodosFilterPanel";
+import TodosFilterPanel, {
+  FilterType,
+} from "../../components/todoListPage/TodosFilterPanel/TodosFilterPanel";
 import TodosList from "../../components/todoListPage/TodosList/TodosList";
 
 const TodoListPage = (props) => {
@@ -20,6 +22,7 @@ const TodoListPage = (props) => {
   const todos = useSelector(getTodos);
   const dispatch = useDispatch();
 
+  const [todoFilterName, setTodoFilterName] = useState(FilterType.ALL);
   const [outputTodos, setOutputTodos] = useState([]);
 
   useEffect(() => {
@@ -38,9 +41,19 @@ const TodoListPage = (props) => {
     <div className="page">
       <TodosHeader todosCount={todos.length} doneCount={doneCount} />
       <div className="page__body">
-        <TodosFilterPanel todos={todos} setOutputTodos={setOutputTodos} />
+        <TodosFilterPanel
+          todos={todos}
+          setOutputTodos={setOutputTodos}
+          todoFilterName={todoFilterName}
+          setTodoFilterName={setTodoFilterName}
+        />
 
-        <TodosList isAuth={isAuth} outputTodos={outputTodos} todos={todos} />
+        <TodosList
+          isAuth={isAuth}
+          outputTodos={outputTodos}
+          todos={todos}
+          todoFilterName={todoFilterName}
+        />
       </div>
     </div>
   );

@@ -18,4 +18,5 @@ export const ServerURL = {
   TODOS: `/api/todos/`,
   TODO: `/api/todos/${ROUTE_ID}`,
   FILTER_TODOS: `/api/filter/todos/`,
+  SORT_TODOS: `/api/bulk/sort-todos/`,
 };

@@ -12,9 +12,8 @@ export const FilterType = {
 };
 
 const TodosFilterPanel = (props) => {
-  const { todos, setOutputTodos } = props;
+  const { todos, setOutputTodos, todoFilterName, setTodoFilterName } = props;
 
-  const [todoFilterName, setTodoFilterName] = useState(FilterType.ALL);
   const [searchText, setSearchText] = useState(``);
 
   const getButtonVariant = useCallback(

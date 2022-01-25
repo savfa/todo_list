@@ -60,6 +60,13 @@ const Operation = {
         return todo;
       });
   },
+  sortTodos: (sortTodos) => (dispatch, getState, api) => {
+    return api.put(ServerURL.SORT_TODOS, { sortTodos }).then((response) => {
+      const { data: success } = response.data;
+
+      return success;
+    });
+  },
   deleteTodo: (todoId) => (dispatch, getState, api) => {
     return api
       .delete(ReplaceParameterInUrl.id(ServerURL.TODO, todoId))
