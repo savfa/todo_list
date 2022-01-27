@@ -114,6 +114,7 @@ const TodosList = (props) => {
       }
 
       setItemsDnd(items);
+      dispatch(TodosActionCreator.setTodos(items));
     },
     [itemsDnd, isAuth, dispatch]
   );

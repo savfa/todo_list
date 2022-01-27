@@ -27,13 +27,14 @@ const AddTodo = (props) => {
         TodosActionCreator.setTodos([
           ...todos,
           {
-            id: todos[todos.length - 1].id + 1,
+            id: todos.length + 1,
             userId: 1,
             label: addTodoText,
             done: false,
             important: false,
             createdAt: new Date(Date.now()).toISOString(),
             updatedAt: new Date(Date.now()).toISOString(),
+            sort: null,
           },
         ])
       );
