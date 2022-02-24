@@ -140,7 +140,7 @@ const TodosList = (props) => {
                       key={todo.id}
                       draggableId={String(todo.id)}
                       index={index}>
-                      {/* eslint-disable-next-line no-shadow */}
+                      {/* eslint-disable-next-line no-shadow,@typescript-eslint/no-shadow */}
                       {(provided, snapshot) => (
                         // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions
                         <li

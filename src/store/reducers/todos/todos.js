@@ -90,6 +90,7 @@ const Operation = {
   },
 };
 
+// eslint-disable-next-line @typescript-eslint/default-param-last
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.SET_TODOS:
