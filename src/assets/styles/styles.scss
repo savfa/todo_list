@@ -1,0 +1,89 @@
+@import "~bootstrap/scss/bootstrap";
+
+html {
+  display: flex;
+  box-sizing: border-box;
+  height: 100%;
+  // font-size: $default-font-size;
+}
+
+* {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+ul,li {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  position: relative;
+  width: 100%;
+  font-smooth: antialiased;
+  // background-color: $body-bg;
+  box-sizing: border-box;
+
+
+  #root {
+    height: 100%;
+  }
+}
+
+.layout {
+  $root: "layout";
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+
+  &__header {
+
+  }
+
+  &__main-wrap {
+    flex: 1 0 auto;
+  }
+
+  &__footer-wrap {
+    flex: 0 0 auto;
+  }
+}
+
+.button-icon {
+  min-height: 40px;
+  min-width: 40px;
+  height: 40px;
+  width: 40px;
+}
+
+input{
+  max-width: 100% !important;
+}
+
+section {
+  margin-bottom: 1rem;
+}
+
+.addForm-enter {
+  opacity: 0;
+}
+.addForm-enter-active {
+  opacity: 1;
+  transition: opacity 0.3s ease-in;
+}
+.addForm-exit {
+  opacity: 1;
+}
+.addForm-exit-active {
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}

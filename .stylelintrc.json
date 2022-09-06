@@ -1,0 +1,134 @@
+{
+  "syntax": "scss",
+  "extends": ["stylelint-config-standard", "stylelint-config-sass-guidelines"],
+  "plugins": ["stylelint-scss", "stylelint-prettier", "stylelint-order"],
+  "rules": {
+    "prettier/prettier": [
+      true,
+      {
+        "singleQuote": false
+      }
+    ],
+    "string-quotes": "double",
+    "max-nesting-depth": 4,
+    "max-empty-lines": 1,
+    "color-hex-case": [
+      "lower",
+      {
+        "message": "HEX цвета буквами строчными указывать следует",
+        "severity": "warning"
+      }
+    ],
+    "number-leading-zero": [
+      "always",
+      {
+        "message": "Нуль перед точкой явно указать следует"
+      }
+    ],
+    "length-zero-no-unit": [
+      true,
+      {
+        "message": "Нулю не нужны измерения единицы"
+      }
+    ],
+    "function-comma-space-after": [
+      "always",
+      {
+        "message": "После запятой пробел необходим"
+      }
+    ],
+    "function-comma-space-before": [
+      "never",
+      {
+        "message": "Перед запятой пробела быть не должно"
+      }
+    ],
+    "function-whitespace-after": [
+      "always",
+      {
+        "message": "Всегда нужны пробелы между функциями"
+      }
+    ],
+    "number-max-precision": [
+      6,
+      {
+        "message": "Максимум 6 символов после точки в десятичной дроби"
+      }
+    ],
+    "number-no-trailing-zeros": [
+      true,
+      {
+        "message": "Лишний (необязательный) нуль в дроби"
+      }
+    ],
+    "time-min-milliseconds": [
+      100,
+      {
+        "message": "Время менее 100мс — нет смысла использовать"
+      }
+    ],
+    "unit-case": [
+      "lower",
+      {
+        "message": "Измерения единицы буквами строчными надобно"
+      }
+    ],
+    "declaration-bang-space-after": [
+      "never",
+      {
+        "message": "После знака восклицательного пробел убрать следует"
+      }
+    ],
+    "declaration-bang-space-before": [
+      "always",
+      {
+        "message": "Перед знаком восклицательным пробел оставить хочешь ты"
+      }
+    ],
+    "declaration-no-important": [
+      true,
+      {
+        "message": "!important с опаской применять следует",
+        "severity": "warning"
+      }
+    ],
+    "declaration-block-no-duplicate-properties": [
+      true,
+      {
+        "message": "Правила повторять не следует"
+      }
+    ],
+    "block-no-empty": null,
+    "selector-attribute-quotes": [
+      "always",
+      {
+        "message": "В селекторе атрибута кавычки писать должен ты",
+        "except": ["empty"]
+      }
+    ],
+    "function-url-quotes": [
+      "always",
+      {
+        "message": "Ну а как же иначе"
+      }
+    ],
+    "order/order": [
+      [
+        "dollar-variables",
+        "custom-properties",
+        "declarations",
+        "at-rules",
+        "rules",
+        {
+          "type": "at-rule",
+          "name": "media"
+        },
+        {
+          "type": "at-rule",
+          "name": "supports"
+        }
+      ],
+      { "severity": "warning" }
+    ]
+  }
+}
